@@ -4,28 +4,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity"
     android:background="@drawable/bgr2"
-    >
+    tools:context=".LoginActivity">
+
     <TextView
         android:id="@+id/welcome_to"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="96dp"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="96dp"
         android:gravity="center_horizontal|top"
-        android:text="@string/welcome_to">
+        android:text="@string/welcome_to"
+        android:textColor="@android:color/holo_red_light"
+        android:textSize="50dp">
 
     </TextView>
+
     <TextView
+        android:id="@+id/furniture"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/furniture"
-        android:layout_marginTop="4dp"
         android:layout_below="@id/welcome_to"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="4dp"
         android:gravity="center_horizontal|top"
-        android:text="@string/furniture">
+        android:text="@string/furniture"
+        android:textColor="@android:color/holo_red_light"
+        android:textSize="50dp">
 
     </TextView>
 
@@ -36,7 +41,7 @@
         android:layout_below="@+id/furniture"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="71dp"
+        android:layout_marginTop="0dp"
         android:layout_marginRight="8dp"
         android:background="@drawable/border_edittext"
         android:drawableLeft="@drawable/ic_account_box_black_24dp"
@@ -56,7 +61,7 @@
         android:layout_alignEnd="@+id/editText"
         android:layout_marginStart="2dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="66dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="-2dp"
         android:layout_marginRight="8dp"
         android:background="@drawable/border_edittext"
@@ -71,79 +76,90 @@
         android:id="@+id/btnLogin"
         android:layout_width="341dp"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_below="@+id/editText1"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="8dp"
-        android:padding="18dp"
         android:background="#E23C3C"
+        android:padding="18dp"
         android:text="Login"
         android:textColor="#FFFFFF"
         android:textSize="18sp">
 
     </Button>
+
     <Button
         android:id="@+id/btnRegister"
         android:layout_width="341dp"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
         android:layout_marginBottom="8dp"
-        android:padding="18dp"
         android:background="#E23C3C"
+        android:padding="18dp"
         android:text="Register now"
         android:textColor="#FFFFFF"
         android:textSize="18sp">
-        
+
     </Button>
-    
+
     <LinearLayout
         android:layout_width="341dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_below="@id/btnLogin"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="8dp"
-        android:layout_below="@id/btnLogin">
+        android:orientation="horizontal">
+
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginRight="4dp"
-            android:orientation="horizontal"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
             <ImageView
+
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+
+                android:layout_gravity="fill"
                 android:background="#FFFFFF"
-                android:src="@drawable/facebook"/>
+                android:longClickable="false"
+                android:scaleType="fitCenter"
+                android:src="@drawable/facebook" />
+
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:text="Facebook"
-                android:textColor="#FFFFFF"
-                android:background="#3A559F"
                 android:layout_gravity="bottom"
-                >
+                android:background="#3A559F"
+                android:text="Facebook"
+                android:textColor="#FFFFFF">
 
             </Button>
         </LinearLayout>
+
         <LinearLayout
-            android:layout_marginLeft="4dp"
             android:id="@+id/FrameLayout2"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
             android:layout_weight="1"
-            android:orientation="horizontal"
-            android:layout_height="wrap_content">
+            android:orientation="horizontal">
+
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:background="#FFFFFF"
-                android:src="@drawable/google"/>
+                android:src="@drawable/google" />
+
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:text="Google"
+                android:layout_gravity="bottom"
                 android:background="#cf4333"
-                android:textColor="#FFFFFF"
-                android:layout_gravity="bottom"/>
+                android:text="Google"
+                android:textColor="#FFFFFF" />
         </LinearLayout>
     </LinearLayout>
 
