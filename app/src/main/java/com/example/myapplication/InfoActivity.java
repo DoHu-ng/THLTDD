@@ -23,11 +23,14 @@ public class InfoActivity extends AppCompatActivity {
         edtEmail = findViewById(R.id.editText);
         edtUsername = findViewById(R.id.editText2);
         edtPass = findViewById(R.id.editText3);
-        getSupportActionBar().setTitle("Account Info");
+
+       // getSupportActionBar().setTitle("Account Info");
+
+
         Intent intent = getIntent();
         edtName.setText(intent.getStringExtra("Username"));
     }
-    /*@Override
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.option_menu, menu);
@@ -39,5 +42,5 @@ public class InfoActivity extends AppCompatActivity {
         if(item.getItemId() == R.id.mnuSave){
         }
         return super.onOptionsItemSelected(item);
-    }*/
+    }
 }

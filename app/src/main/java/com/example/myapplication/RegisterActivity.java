@@ -30,7 +30,7 @@ public class RegisterActivity extends AppCompatActivity {
                 finish();
             }
         });
-        /*btnSignIn.setOnClickListener(new View.OnClickListener() {
+        btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(!isValid(edtEmail.getText().toString())){
@@ -48,9 +48,9 @@ public class RegisterActivity extends AppCompatActivity {
                 if(edtConfirm.getText().toString().isEmpty()){
                     edtConfirm.setError("Password required");
                     return;
-                }*/
+                }
 
-                    /*if(edtPassword.getText().toString().equals(edtConfirm.getText().toString()))
+                    if(edtPassword.getText().toString().equals(edtConfirm.getText().toString()))
                     {
                         Intent intent = new Intent(RegisterActivity.this,
                                 LoginActivity.class);
@@ -61,8 +61,7 @@ public class RegisterActivity extends AppCompatActivity {
                         setResult(101, intent);
                         finish();
                     }else {
-                        edtPassword.setError("Password and confirm password does
-                                not match");
+                        edtPassword.setError("Password and confirm password does not match");
                                 edtConfirm.setText("");
                         return;
                     }
@@ -79,7 +78,6 @@ public class RegisterActivity extends AppCompatActivity {
                 if (email == null)
                     return false;
                 return pat.matcher(email).matches();
-            }*/
+            }
 
     }
-}
