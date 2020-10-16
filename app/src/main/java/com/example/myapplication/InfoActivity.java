@@ -27,7 +27,7 @@ public class InfoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info);
-
+        // dataLogin tên file xml chứa dữ liệu share
         sharedPreferences=getSharedPreferences("dataLogin",MODE_PRIVATE);
 //
         edtName = (EditText) findViewById(R.id.editText4);
