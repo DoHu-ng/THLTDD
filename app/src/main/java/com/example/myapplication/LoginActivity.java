@@ -58,7 +58,7 @@ public class LoginActivity extends AppCompatActivity {
                     Intent intent = new Intent(LoginActivity.this,
                             InfoActivity.class);
                     intent.putExtra("Username", edtUsername.getText().toString());
-                    startActivity(intent);
+                    startActivityForResult(intent, 103);
                 }
             }
         });
@@ -80,9 +80,10 @@ public class LoginActivity extends AppCompatActivity {
             edtUsername.setText(data.getStringExtra("username"));
             edtPassword.setText(data.getStringExtra("password"));
         }
-        if(requestCode == 102 && resultCode == 101){
+        if(requestCode == 103 && resultCode == 104){
             edtUsername.setText(data.getStringExtra("username"));
             edtPassword.setText(data.getStringExtra("password"));
         }
     }
+
 }
