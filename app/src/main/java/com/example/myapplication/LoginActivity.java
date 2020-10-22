@@ -31,7 +31,7 @@ public class LoginActivity extends AppCompatActivity {
                 if(edtUsername.getText().toString().isEmpty()||edtPassword.getText().toString().isEmpty()){
                     final Dialog dialog=new Dialog(LoginActivity.this);
                     dialog.setContentView(R.layout.dialog_custom);
-                    btnRegister = dialog.findViewById(R.id.btnRegister);
+                    btnOk = dialog.findViewById(R.id.btnOk);
                     btnCancel = dialog.findViewById(R.id.btnCancel);
                     btnRegister.setOnClickListener(new View.OnClickListener() {
                         @Override
