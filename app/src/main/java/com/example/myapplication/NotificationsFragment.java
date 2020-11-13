@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -33,8 +34,17 @@ public class NotificationsFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         listView = view.findViewById(R.id.listView2);
-        arrayList = Utils.getMockData3(getContext());
+        final Utils utils = new Utils(getContext());
+        arrayList = utils.getFurnitureHistory();
         furnitureAdapter = new FurnitureAdapter(getContext(),arrayList);
         listView.setAdapter(furnitureAdapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long
+                    l) {
+                Utils.furnitureHistory.add(arrayList.get(i));
+            }
+        });
+
     }
 }

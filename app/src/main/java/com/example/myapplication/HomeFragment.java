@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -22,6 +23,7 @@ public class HomeFragment extends Fragment {
     ListView listView;
     ArrayList<Furniture> arrayList;
     FurnitureAdapter furnitureAdapter;
+    Utils utils;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -31,8 +33,8 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        utils = new Utils(getContext());
         return inflater.inflate(R.layout.fragment_home, container, false);
-
 
     }
 
@@ -44,6 +46,41 @@ public class HomeFragment extends Fragment {
         arrayList = Utils.getMockData(getContext());
         furnitureAdapter = new FurnitureAdapter(getContext(),arrayList);
         listView.setAdapter(furnitureAdapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if(contains(Utils.furnitureHistory,arrayList.get(position).getName()) == true)
+                {
+                    Utils.furnitureHistory.add(arrayList.get(position));
+                    Toast.makeText(getContext(), position+" ", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(getContext(), DetailActivity.class);
+                    intent.putExtra("furniture", arrayList.get(position));
+//                    intent.putExtra("name", arrayList.get(position).getName());
+//                    intent.putExtra("description", arrayList.get(position).getDescription());
+//                    intent.putExtra("image", arrayList.get(position).getImage());
+                    startActivity(intent);
+                }
+
+
+
+            }
+        });
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        utils.WriteToFileInternal(arrayList);
+    }
+
+    public  boolean contains(ArrayList<Furniture> list, String name) {
+        for (Furniture item : list) {
+            if (item.getName().equals(name)) {
+                return false;
+            }
+        }
+        return true;
     }
 
 }

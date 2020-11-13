@@ -40,7 +40,7 @@ public class FurnitureAdapter extends ArrayAdapter<Furniture> {
 
         textView.setText(furniture.getDescription());
 
-        imageView.setImageBitmap(furniture.getImage());
+        imageView.setImageBitmap(Utils.convertStringToBitmapFromAccess(getContext(), furniture.getImage()));
 
         return convertView;
     }

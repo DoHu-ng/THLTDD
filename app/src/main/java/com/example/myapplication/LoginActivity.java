@@ -1,7 +1,9 @@
 package com.example.myapplication;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -14,6 +16,8 @@ import androidx.appcompat.app.AppCompatActivity;
 public class LoginActivity extends AppCompatActivity {
     EditText edtUsername, edtPassword;
     Button btnLogin, btnRegister, btnOk, btnCancel;
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,8 +26,19 @@ public class LoginActivity extends AppCompatActivity {
         edtUsername=findViewById(R.id.editText);
         edtPassword=findViewById(R.id.editText1);
 
+
         btnLogin=findViewById(R.id.btnLogin);
         btnRegister=findViewById(R.id.btnRegister);
+
+        SharedPreferences sp = getApplicationContext().getSharedPreferences("dtLogin", Context.MODE_PRIVATE);
+
+        String uname = sp.getString("taikhoan", "");
+        String pass = sp.getString("matkhau", "");
+
+
+
+        edtUsername.setText(uname);
+        edtPassword.setText(pass);
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,8 +71,10 @@ public class LoginActivity extends AppCompatActivity {
                     edtPassword.setError("Minimum 6 number");
                 }else {
                     Intent intent = new Intent(LoginActivity.this,
-                            InfoActivity.class);
+                            MainActivity2.class);
                     intent.putExtra("Username", edtUsername.getText().toString());
+                    intent.putExtra("Password", edtPassword.getText().toString());
+
                     startActivityForResult(intent, 103);
                 }
             }

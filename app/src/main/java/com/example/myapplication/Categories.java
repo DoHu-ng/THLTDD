@@ -7,12 +7,23 @@ import android.graphics.BitmapFactory;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Categories {
+public class Categories implements Serializable {
     String name;
     ArrayList<Furniture> arrayList;
     Bitmap image;
+
+    @Override
+    public String toString() {
+        return "Categories{" +
+                "name='" + name + '\'' +
+                ", arrayList=" + arrayList +
+                ", image=" + image +
+                '}';
+    }
+
     public Categories(String name, ArrayList<Furniture> arrayList) {
         this.name = name;
         this.arrayList = arrayList;

@@ -29,7 +29,7 @@ public class InfoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_info);
         // dataLogin tên file xml chứa dữ liệu share
         sharedPreferences=getSharedPreferences("dataLogin",MODE_PRIVATE);
-//
+
         edtName = (EditText) findViewById(R.id.editText4);
         edtEmail = (EditText) findViewById(R.id.editText);
         edtUsername = (EditText) findViewById(R.id.editText2);
