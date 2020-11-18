@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -43,12 +44,12 @@ public class DashboardFragment extends Fragment {
         gridView.setAdapter(furnitureAdapterGrid);
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i,
+            public void onItemClick(AdapterView<?> adapterView, View view, int position,
                                     long l) {
-                FragmentTransaction fragmentTransaction =
-                        getFragmentManager().beginTransaction();
+                    Toast.makeText(getContext(), position+" ", Toast.LENGTH_SHORT).show();
+                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
 
-                fragmentTransaction.replace(R.id.nav_host_fragment,CategoriesFragment.newInstance(i));
+                fragmentTransaction.replace(R.id.nav_host_fragment,CategoriesFragment.newInstance(position));
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
             }

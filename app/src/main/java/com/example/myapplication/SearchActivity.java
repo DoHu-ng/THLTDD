@@ -24,20 +24,20 @@ public class SearchActivity extends AppCompatActivity {
     FurnitureAdapter furnitureAdapter;
     TagGroup mTagGroup;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
-        mTagGroup = findViewById(R.id.tag_group);
-        mTagGroup.setTags(new String[]{"Bed", "Living", "Accessories", "Sealy", "Christopher"});
-
         utils = new Utils(SearchActivity.this);
-        arrayList =new ArrayList<>();
+
+        arrayList = Utils.getMockData(getApplicationContext());
         listView = findViewById(R.id.listView);
         furnitureAdapter = new FurnitureAdapter(SearchActivity.this, arrayList);
         listView.setAdapter(furnitureAdapter);
-//        Log.d("FurnitureApp", utils.LoadFileInternal().size()+"");
+
+        Log.d("FurnitureApp", utils.LoadFileInternal() +"");
 
         searchView = findViewById(R.id.search_vew);
         searchView.setIconifiedByDefault(true);
@@ -49,14 +49,22 @@ public class SearchActivity extends AppCompatActivity {
             public boolean onQueryTextSubmit(String query) {
                 return false;
             }
+
             @Override
             public boolean onQueryTextChange(String newText) {
                 searchFurniture(newText);
                 return false;
             }
         });
-
-
+        mTagGroup = findViewById(R.id.tag_group);
+        mTagGroup.setTags(new String[]{"Bed", "Living", "Accessories", "Sealy", "Christopher"});
+        mTagGroup.setOnTagClickListener(new TagGroup.OnTagClickListener() {
+            @Override
+            public void onTagClick(String tag) {
+                searchView.setQuery(tag, false);
+                hideSoftKeyboard(searchView);
+            }
+        });
     }
 
     private void searchFurniture(String newText) {
@@ -78,7 +86,8 @@ public class SearchActivity extends AppCompatActivity {
         }
     }
     public void hideSoftKeyboard(View view){
-        InputMethodManager imm=(InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+        InputMethodManager imm
+                =(InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 }

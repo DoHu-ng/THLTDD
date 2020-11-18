@@ -44,11 +44,11 @@ public class Utils {
     public static  ArrayList<Furniture> getMockData(Context context){
         ArrayList<Furniture> tmp = new ArrayList<>();
         tmp.add(new Furniture(context.getString(R.string.product_one), context.getString(R.string.product_one_des), "hinh_1.png"));
-        tmp.add(new Furniture(context.getString(R.string.product_two), context.getString(R.string.product_one_des), "hinh_1.png"));
-        tmp.add(new Furniture(context.getString(R.string.product_three), context.getString(R.string.product_one_des), "hinh_1.png"));
-        tmp.add(new Furniture(context.getString(R.string.product_four), context.getString(R.string.product_one_des), "hinh_1.png"));
-        tmp.add(new Furniture(context.getString(R.string.product_five), context.getString(R.string.product_one_des),"hinh_1.png"));
-        tmp.add(new Furniture(context.getString(R.string.product_six), context.getString(R.string.product_one_des), "hinh_1.png"));
+        tmp.add(new Furniture(context.getString(R.string.product_two), context.getString(R.string.product_one_des), "hinh_2.png"));
+        tmp.add(new Furniture(context.getString(R.string.product_three), context.getString(R.string.product_one_des), "hinh_3.png"));
+        tmp.add(new Furniture(context.getString(R.string.product_four), context.getString(R.string.product_one_des), "hinh_4.png"));
+        tmp.add(new Furniture(context.getString(R.string.product_five), context.getString(R.string.product_one_des),"hinh_5.png"));
+        tmp.add(new Furniture(context.getString(R.string.product_six), context.getString(R.string.product_one_des), "hinh_6.png"));
         return tmp;
     }
 
@@ -79,64 +79,35 @@ public class Utils {
     }
     public ArrayList<Furniture> getFurnitureHistory(){ return this.furnitureHistory; }
 
-//    public ArrayList<Furniture> getFurnitureFromCategories(int pos){
-//        ArrayList<Furniture> tmp = new ArrayList<>();
-//        switch (pos){
-//            case 0:
-//                tmp.add(new Furniture(context.getString(R.string.product_one_des),
-//                        context.getString(R.string.product_one), convertStringToBitmapFromAccess(context,"hinh_1.png")));
-//                tmp.add(new
-//                        Furniture(context.getString(R.string.product_one_des),
-//                        context.getString(R.string.product_two), convertStringToBitmapFromAccess(context,"hinh_2.png")));
-//                tmp.add(new
-//                        Furniture(context.getString(R.string.product_one_des),
-//                        context.getString(R.string.product_three), convertStringToBitmapFromAccess(context,"hinh_3.png")));
-//                tmp.add(new
-//                        Furniture(context.getString(R.string.product_one_des),
-//                        context.getString(R.string.product_four), convertStringToBitmapFromAccess(context,"hinh_4.png")));
-//                break;
-//            case 1:
-//                tmp.add(new
-//                        Furniture(context.getString(R.string.product_one_des),
-//                        context.getString(R.string.product_three), convertStringToBitmapFromAccess(context,"hinh_3.png")));
-//                tmp.add(new
-//                        Furniture(context.getString(R.string.product_one_des),
-//                        context.getString(R.string.product_four), convertStringToBitmapFromAccess(context,"hinh_4.png")));
-//                tmp.add(new
-//                        Furniture(context.getString(R.string.product_one_des),
-//                        context.getString(R.string.product_five), convertStringToBitmapFromAccess(context,"hinh_2.png")));
-//                break;
-//            case 2:
-//                tmp.add(new
-//                        Furniture(context.getString(R.string.product_one_des),
-//                        context.getString(R.string.product_two), convertStringToBitmapFromAccess(context,"hinh_2.png")));
-//                tmp.add(new
-//                        Furniture(context.getString(R.string.product_one_des),
-//                        context.getString(R.string.product_three), convertStringToBitmapFromAccess(context,"hinh_3.png")));
-//                tmp.add(new
-//                        Furniture(context.getString(R.string.product_one_des),
-//                        context.getString(R.string.product_four), convertStringToBitmapFromAccess(context,"hinh_4.png")));
-//                tmp.add(new
-//                        Furniture(context.getString(R.string.product_one_des),
-//                        context.getString(R.string.product_five), convertStringToBitmapFromAccess(context,"hinh_5.png")));
-//                break;
-//            case 3:
-//                tmp.add(new
-//                        Furniture(context.getString(R.string.product_one_des),
-//                        context.getString(R.string.product_three), convertStringToBitmapFromAccess(context,"hinh_3.png")));
-//                tmp.add(new
-//                        Furniture(context.getString(R.string.product_one_des),
-//                        context.getString(R.string.product_four), convertStringToBitmapFromAccess(context,"hinh_4.png")));
-//                tmp.add(new
-//                        Furniture(context.getString(R.string.product_one_des),
-//                        context.getString(R.string.product_five), convertStringToBitmapFromAccess(context,"hinh_5.png")));
-//                tmp.add(new
-//                        Furniture(context.getString(R.string.product_one_des),
-//                        context.getString(R.string.product_one), convertStringToBitmapFromAccess(context,"hinh_1.png")));
-//                break;
-//        }
-//        return tmp;
-//    }
+    public ArrayList<Furniture> getFurnitureFromCategories(int pos){
+        ArrayList<Furniture> tmp = new ArrayList<>();
+        switch (pos){
+            case 0:
+                tmp.add(new Furniture(context.getString(R.string.product_one), context.getString(R.string.product_one_des), "hinh_1.png"));
+                tmp.add(new Furniture(context.getString(R.string.product_one), context.getString(R.string.product_one_des), "hinh_2.png"));
+                tmp.add(new Furniture(context.getString(R.string.product_one), context.getString(R.string.product_one_des), "hinh_3.png"));
+                tmp.add(new Furniture(context.getString(R.string.product_one), context.getString(R.string.product_one_des), "hinh_4.png"));
+                break;
+            case 1:
+                tmp.add(new Furniture(context.getString(R.string.product_one), context.getString(R.string.product_one_des), "hinh_3.png"));
+                tmp.add(new Furniture(context.getString(R.string.product_one), context.getString(R.string.product_one_des), "hinh_4.png"));
+                tmp.add(new Furniture(context.getString(R.string.product_one), context.getString(R.string.product_one_des), "hinh_2.png"));
+                break;
+            case 2:
+                tmp.add(new Furniture(context.getString(R.string.product_one), context.getString(R.string.product_one_des), "hinh_2.png"));
+                tmp.add(new Furniture(context.getString(R.string.product_one), context.getString(R.string.product_one_des), "hinh_3.png"));
+                tmp.add(new Furniture(context.getString(R.string.product_one), context.getString(R.string.product_one_des), "hinh_4.png"));
+                tmp.add(new Furniture(context.getString(R.string.product_one), context.getString(R.string.product_one_des), "hinh_5.png"));
+                break;
+            case 3:
+                tmp.add(new Furniture(context.getString(R.string.product_one), context.getString(R.string.product_one_des), "hinh_3.png"));
+                tmp.add(new Furniture(context.getString(R.string.product_one), context.getString(R.string.product_one_des), "hinh_4.png"));
+                tmp.add(new Furniture(context.getString(R.string.product_one), context.getString(R.string.product_one_des), "hinh_5.png"));
+                tmp.add(new Furniture(context.getString(R.string.product_one), context.getString(R.string.product_one_des), "hinh_1.png"));
+                break;
+        }
+        return tmp;
+    }
 
     public void WriteToFileInternal(ArrayList<Furniture> arrayList){
 
@@ -154,24 +125,22 @@ public class Utils {
             e.printStackTrace();
         }
     }
-    public ArrayList<Furniture> LoadFileInternal(){
+
+    public ArrayList<Furniture> LoadFileInternal() {
         ArrayList<Furniture> arrayList = new ArrayList<>();
         try {
-            File file = new File(context.getFilesDir(), "DataInternal");
+            File file = new File(context.getFilesDir(), filename);
             FileInputStream fileInputStream = new FileInputStream(file);
-            ObjectInputStream objectInputStream = new
-                    ObjectInputStream(fileInputStream);
-            arrayList = (ArrayList<Furniture>)
-                    objectInputStream.readObject();
-            Log.d("FurnitureApp", arrayList.size()+"");
+            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+            arrayList = (ArrayList<Furniture>) objectInputStream.readObject();
+            Log.d("FurnitureApp", arrayList.size() + "");
             return arrayList;
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+            e.printStackTrace(); }
         return null;
     }
 }

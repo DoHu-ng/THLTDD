@@ -38,13 +38,6 @@ public class NotificationsFragment extends Fragment {
         arrayList = utils.getFurnitureHistory();
         furnitureAdapter = new FurnitureAdapter(getContext(),arrayList);
         listView.setAdapter(furnitureAdapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long
-                    l) {
-                Utils.furnitureHistory.add(arrayList.get(i));
-            }
-        });
 
     }
 }

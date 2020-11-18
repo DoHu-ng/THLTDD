@@ -51,17 +51,17 @@ public class CategoriesFragment extends Fragment {
         Bundle bundle = getArguments();
         listView = view.findViewById(R.id.listView);
         arrayList = new ArrayList<>();
-        //arrayList = utils.getFurnitureFromCategories(bundle.getInt("category"));
+        arrayList = utils.getFurnitureFromCategories(bundle.getInt("category"));
         furnitureAdapter = new FurnitureAdapter(getContext(),arrayList);
         listView.setAdapter(furnitureAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i,
+            public void onItemClick(AdapterView<?> adapterView, View view, int pos,
                                     long l) {
-                Utils.furnitureHistory.add(arrayList.get(i));
-                Toast.makeText(getContext(), i+"", Toast.LENGTH_SHORT).show();
+                Utils.furnitureHistory.add(arrayList.get(pos));
+                Toast.makeText(getContext(), pos+"", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getActivity(), DetailActivity.class);
-                intent.putExtra("furniture", arrayList.get(i));
+                intent.putExtra("furniture", arrayList.get(pos));
                 startActivity(intent);
             }
         });

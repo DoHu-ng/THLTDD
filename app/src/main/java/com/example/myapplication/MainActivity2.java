@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.SearchView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -21,15 +22,19 @@ public class MainActivity2 extends AppCompatActivity {
     BottomNavigationView navView;
     boolean status=false;
     MenuItem menuItem;
+    EditText searchView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
         navView = findViewById(R.id.nav_view);
 
-        EditText searchView = findViewById(R.id.search_vew);
-      //  hideSoftKeyboard(searchView);
+        searchView = findViewById(R.id.search_vew);
+        //  hideSoftKeyboard(searchView);
 
+        loadFragment(new HomeFragment());
+        navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        navView.setSelectedItemId(R.id.navigation_home);
         searchView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -37,10 +42,6 @@ public class MainActivity2 extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-        loadFragment(new HomeFragment());
-        navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-        navView.setSelectedItemId(R.id.navigation_home);
     }
     private BottomNavigationView.OnNavigationItemSelectedListener
             mOnNavigationItemSelectedListener

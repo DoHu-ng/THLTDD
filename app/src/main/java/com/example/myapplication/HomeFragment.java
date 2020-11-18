@@ -56,9 +56,6 @@ public class HomeFragment extends Fragment {
                     Toast.makeText(getContext(), position+" ", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getContext(), DetailActivity.class);
                     intent.putExtra("furniture", arrayList.get(position));
-//                    intent.putExtra("name", arrayList.get(position).getName());
-//                    intent.putExtra("description", arrayList.get(position).getDescription());
-//                    intent.putExtra("image", arrayList.get(position).getImage());
                     startActivity(intent);
                 }
 
