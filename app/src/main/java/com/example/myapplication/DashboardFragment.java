@@ -22,6 +22,7 @@ public class DashboardFragment extends Fragment {
     ArrayList<Categories> arrayList;
     FurnitureAdapterGrid furnitureAdapterGrid;
     Utils utils;
+    DBHelper dbHelper;
 
     public DashboardFragment() {
         // Required empty public constructor
@@ -32,6 +33,7 @@ public class DashboardFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         utils = new Utils(getContext());
+        dbHelper = new DBHelper(getContext());
         return inflater.inflate(R.layout.fragment_dashboard, container, false);
     }
 
@@ -39,16 +41,17 @@ public class DashboardFragment extends Fragment {
     {
         super.onViewCreated(view, savedInstanceState);
         gridView = view.findViewById(R.id.gridView);
-        arrayList = Utils.getMockData2(getContext());
+        dbHelper.insertCategories();
+        arrayList = dbHelper.getALLCategories();
+        //arrayList = Utils.getMockData2(getContext());
         furnitureAdapterGrid = new FurnitureAdapterGrid(getContext(),arrayList);
         gridView.setAdapter(furnitureAdapterGrid);
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position,
                                     long l) {
-                    Toast.makeText(getContext(), position+" ", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), position+" ", Toast.LENGTH_SHORT).show();
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-
                 fragmentTransaction.replace(R.id.nav_host_fragment,CategoriesFragment.newInstance(position));
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();

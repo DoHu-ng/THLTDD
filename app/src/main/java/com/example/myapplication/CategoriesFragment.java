@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +23,7 @@ public class CategoriesFragment extends Fragment {
     ArrayList<Furniture> arrayList;
     FurnitureAdapter furnitureAdapter;
     Utils utils;
+    DBHelper dbHelper;
 
     public CategoriesFragment() {
         // Required empty public constructor
@@ -41,6 +43,7 @@ public class CategoriesFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         utils = new Utils(getContext());
+        dbHelper = new DBHelper(getContext());
         return inflater.inflate(R.layout.fragment_categories, container, false);
     }
 
@@ -51,7 +54,10 @@ public class CategoriesFragment extends Fragment {
         Bundle bundle = getArguments();
         listView = view.findViewById(R.id.listView);
         arrayList = new ArrayList<>();
-        arrayList = utils.getFurnitureFromCategories(bundle.getInt("category"));
+        //dbHelper.insertFurniture();
+//        arrayList = utils.getFurnitureFromCategories(bundle.getInt("category"));
+        //arrayList=dbHelper.addFurnitureToCategories(bundle.getInt("category"));
+        arrayList = dbHelper.getFurnitureFromCategories(bundle.getInt("category"));
         furnitureAdapter = new FurnitureAdapter(getContext(),arrayList);
         listView.setAdapter(furnitureAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

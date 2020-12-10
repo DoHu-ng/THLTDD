@@ -18,11 +18,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
 public class AccountFragment extends Fragment {
-    EditText edtEmail, edtPass, edtUsername;
+    EditText edtEmail, edtPass, edtUsername, editName;
+    RadioButton radioMale, radioFemale;
 
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
@@ -48,18 +50,27 @@ public class AccountFragment extends Fragment {
         edtUsername = view.findViewById(R.id.editText2);
         edtPass = view.findViewById(R.id.editText3);
         edtEmail = view.findViewById(R.id.editText);
+        editName = view.findViewById(R.id.editName);
+        radioMale = view.findViewById(R.id.radiobutton1);
+        radioFemale = view.findViewById(R.id.radiobutton2);
+
+
 
         sharedPreferences = getContext().getSharedPreferences("dtLogin",Context.MODE_PRIVATE);
-
         SharedPreferences sp = getContext().getSharedPreferences("dtLogin", Context.MODE_PRIVATE);
 
         String uname = sp.getString("taikhoan", "");
         String pass = sp.getString("matkhau", "");
         String email = sp.getString("email", "");
+        String name = sp.getString("name","");
+
 
         edtEmail.setText(email);
         edtUsername.setText(uname);
         edtPass.setText(pass);
+        editName.setText(name);
+        radioMale.setChecked(sp.getBoolean("check1",false));
+        radioFemale.setChecked(sp.getBoolean("check2",false));
 
     }
 
@@ -78,14 +89,25 @@ public class AccountFragment extends Fragment {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
+        editor = sharedPreferences.edit();
         if (id == R.id.mnuSave) {
+            String name = editName.getText().toString().trim();
             String username=edtUsername.getText().toString().trim();
             String password=edtPass.getText().toString().trim();
             String email=edtEmail.getText().toString().trim();
-            editor = sharedPreferences.edit();
+            if (radioMale.isChecked()){
+                editor.putBoolean("check1",true);
+                editor.putBoolean("check2",false);
+            }
+            if (radioFemale.isChecked()){
+                editor.putBoolean("check2",true);
+                editor.putBoolean("check1",false);
+            }
+
             editor.putString("taikhoan",username);
             editor.putString("matkhau",password);
             editor.putString("email",email);
+            editor.putString("name",name);
             editor.commit();
             Toast.makeText(getActivity(),"Saved", Toast.LENGTH_LONG).show();
         }

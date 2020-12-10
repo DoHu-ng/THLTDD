@@ -23,13 +23,14 @@ public class SearchActivity extends AppCompatActivity {
     ListView listView;
     FurnitureAdapter furnitureAdapter;
     TagGroup mTagGroup;
+    DBHelper dbHelper;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
-
+        dbHelper = new DBHelper(SearchActivity.this);
         utils = new Utils(SearchActivity.this);
 
         arrayList = Utils.getMockData(getApplicationContext());
@@ -37,7 +38,7 @@ public class SearchActivity extends AppCompatActivity {
         furnitureAdapter = new FurnitureAdapter(SearchActivity.this, arrayList);
         listView.setAdapter(furnitureAdapter);
 
-        Log.d("FurnitureApp", utils.LoadFileInternal() +"");
+        //Log.d("FurnitureApp", dbHelper.getALLFurniture() +"");
 
         searchView = findViewById(R.id.search_vew);
         searchView.setIconifiedByDefault(true);
@@ -69,7 +70,7 @@ public class SearchActivity extends AppCompatActivity {
 
     private void searchFurniture(String newText) {
         ArrayList<Furniture> tmp = new ArrayList<>();
-        for(Furniture furniture : utils.LoadFileInternal()){
+        for(Furniture furniture : dbHelper.getALLFurniture()){
             if(furniture.getName().toLowerCase().contains(newText.toLowerCase())){
                 tmp.add(furniture);
             }

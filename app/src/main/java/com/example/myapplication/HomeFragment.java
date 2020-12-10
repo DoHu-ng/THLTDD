@@ -24,6 +24,7 @@ public class HomeFragment extends Fragment {
     ArrayList<Furniture> arrayList;
     FurnitureAdapter furnitureAdapter;
     Utils utils;
+    DBHelper dbHelper;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -34,6 +35,7 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         utils = new Utils(getContext());
+        dbHelper = new DBHelper(getContext());
         return inflater.inflate(R.layout.fragment_home, container, false);
 
     }
@@ -43,7 +45,9 @@ public class HomeFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         listView = view.findViewById(R.id.listView);
-        arrayList = Utils.getMockData(getContext());
+        dbHelper.insertFurniture();
+        arrayList = dbHelper.getALLFurniture();
+        //arrayList = Utils.getMockData(getContext());
         furnitureAdapter = new FurnitureAdapter(getContext(),arrayList);
         listView.setAdapter(furnitureAdapter);
 
@@ -58,9 +62,6 @@ public class HomeFragment extends Fragment {
                     intent.putExtra("furniture", arrayList.get(position));
                     startActivity(intent);
                 }
-
-
-
             }
         });
     }

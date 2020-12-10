@@ -10,10 +10,25 @@ import java.io.InputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Categories implements Serializable {
+public class Categories extends ArrayList<Furniture> implements Serializable {
+    Integer id;
     String name;
     ArrayList<Furniture> arrayList;
-    Bitmap image;
+    String image;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Categories(String name, String image, Integer id) {
+        this.id = id;
+        this.name = name;
+        this.image = image;
+    }
 
     @Override
     public String toString() {
@@ -24,15 +39,12 @@ public class Categories implements Serializable {
                 '}';
     }
 
-    public Categories(String name, ArrayList<Furniture> arrayList) {
+    public Categories(String name, ArrayList<Furniture> arrayList, String image) {
         this.name = name;
         this.arrayList = arrayList;
+        this.image=image;
     }
-    public Categories(String name, ArrayList<Furniture> arrayList, Bitmap image) {
-        this.name = name;
-        this.arrayList = arrayList;
-        this.image = image;
-    }
+
     public String getName() {
         return name;
     }
@@ -45,14 +57,13 @@ public class Categories implements Serializable {
     public void setArrayList(ArrayList<Furniture> arrayList) {
         this.arrayList = arrayList;
     }
-    public Bitmap getImage() {
+    public String getImage() {
         return image;
     }
-    public void setImage(Bitmap image) {
+    public void setImage(String image) {
         this.image = image;
     }
-    public static Bitmap convertStringToBitmapFromAccess(Context context, String
-            filename){
+    public static Bitmap convertStringToBitmapFromAccess(Context context, String filename){
         AssetManager assetManager = context.getAssets();
         try {
             InputStream is = assetManager.open(filename);
@@ -63,4 +74,5 @@ public class Categories implements Serializable {
         }
         return null;
     }
+
 }

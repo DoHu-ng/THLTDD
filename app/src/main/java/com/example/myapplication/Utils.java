@@ -59,13 +59,13 @@ public class Utils {
         ArrayList<Furniture> arrayListAccessories = new ArrayList<>();
         ArrayList<Categories> tmp = new ArrayList<>();
         tmp.add(new Categories("BedRoom", arrayListBed,
-                convertStringToBitmapFromAccess(context,"bed_room.png")));
+                "bed_room.png"));
         tmp.add(new Categories("LivingRoom", arrayListBed,
-                convertStringToBitmapFromAccess(context,"living_room.png")));
+                "living_room.png"));
         tmp.add(new Categories("Meeting", arrayListBed,
-                convertStringToBitmapFromAccess(context,"meeting_room.png")));
+                "meeting_room.png"));
         tmp.add(new Categories("Accessories", arrayListBed,
-                convertStringToBitmapFromAccess(context,"accessories.png")));
+                "accessories.png"));
         return tmp;
     }
 
@@ -142,6 +142,34 @@ public class Utils {
         } catch (ClassNotFoundException e) {
             e.printStackTrace(); }
         return null;
+    }
+
+    public ArrayList<Furniture> getMockDataFuniture() {
+        ArrayList<Furniture> tmp = new ArrayList<>();
+        tmp.add(new Furniture(context.getString(R.string.product_one), context.getString(R.string.product_one_des), "hinh_1.png"));
+        tmp.add(new Furniture(context.getString(R.string.product_two), context.getString(R.string.product_one_des), "hinh_2.png"));
+        tmp.add(new Furniture(context.getString(R.string.product_three), context.getString(R.string.product_one_des), "hinh_3.png"));
+        tmp.add(new Furniture(context.getString(R.string.product_four), context.getString(R.string.product_one_des), "hinh_4.png"));
+        tmp.add(new Furniture(context.getString(R.string.product_five), context.getString(R.string.product_one_des),"hinh_5.png"));
+        tmp.add(new Furniture(context.getString(R.string.product_six), context.getString(R.string.product_one_des), "hinh_6.png"));
+        return tmp;
+    }
+
+    public ArrayList<Categories> getMockDataCategories() {
+        ArrayList<Furniture> arrayListBed = new ArrayList<>();
+        ArrayList<Furniture> arrayListLiving = new ArrayList<>();
+        ArrayList<Furniture> arrayListMeeting = new ArrayList<>();
+        ArrayList<Furniture> arrayListAccessories = new ArrayList<>();
+        ArrayList<Categories> tmp = new ArrayList<>();
+        tmp.add(new Categories("BedRoom", arrayListBed,
+                "bed_room.png"));
+        tmp.add(new Categories("LivingRoom", arrayListBed,
+                "living_room.png"));
+        tmp.add(new Categories("Meeting", arrayListBed,
+            "meeting_room.png"));
+        tmp.add(new Categories("Accessories", arrayListBed,
+              "accessories.png"));
+        return tmp;
     }
 }
 

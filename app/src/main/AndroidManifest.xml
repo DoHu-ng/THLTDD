@@ -15,10 +15,11 @@
             android:name=".MainActivity2"
             android:theme="@style/AppTheme1"
             android:windowSoftInputMode="stateAlwaysHidden"/>
+
         <activity
             android:name=".InfoActivity"
             android:label="Account info"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme1" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".LoginActivity" />
         <activity

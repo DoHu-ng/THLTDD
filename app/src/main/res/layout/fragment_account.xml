@@ -12,7 +12,7 @@
         android:layout_centerInParent="true"
         android:padding="16dp">
         <EditText
-            android:id="@+id/editText4"
+            android:id="@+id/editName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/furniture"

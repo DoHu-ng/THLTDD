@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -12,7 +13,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.SearchView;
+
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -23,11 +26,20 @@ public class MainActivity2 extends AppCompatActivity {
     boolean status=false;
     MenuItem menuItem;
     EditText searchView;
+    LinearLayout linearLayout;
+    Toolbar toolbar;
+    DBHelper dbHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
         navView = findViewById(R.id.nav_view);
+
+        dbHelper = new DBHelper(getApplicationContext());
+        dbHelper.createTable();
+
+        linearLayout = findViewById(R.id.linear);
+        toolbar =findViewById(R.id.toolbar);
 
         searchView = findViewById(R.id.search_vew);
         //  hideSoftKeyboard(searchView);
@@ -51,22 +63,31 @@ public class MainActivity2 extends AppCompatActivity {
             Fragment fragment;
             switch (item.getItemId()) {
                 case R.id.navigation_dashboard:
-//                    getSupportActionBar().setTitle("Dashboard");
+//                  getSupportActionBar().setTitle("Dashboard");
+                    linearLayout.setVisibility(View.VISIBLE);
+                    toolbar.setVisibility(View.GONE);
                     fragment = new DashboardFragment();
                     loadFragment(fragment);
                     return true;
                 case R.id.navigation_home:
 //                    getSupportActionBar().setTitle("Home");
+                    linearLayout.setVisibility(View.VISIBLE);
+                    toolbar.setVisibility(View.GONE);
                     fragment = new HomeFragment();
                     loadFragment(fragment);
                     return true;
                 case R.id.navigation_notifications:
 //                    getSupportActionBar().setTitle("Notification");
+                    linearLayout.setVisibility(View.VISIBLE);
+                    toolbar.setVisibility(View.GONE);
                     fragment = new NotificationsFragment();
                     loadFragment(fragment);
                     return true;
                 case R.id.navigation_account:
-//                    getSupportActionBar().setTitle("Account");
+//                  getSupportActionBar().setTitle("Account");
+                    linearLayout.setVisibility(View.GONE);
+                    toolbar.setVisibility(View.VISIBLE);
+                    setSupportActionBar(toolbar);
                     fragment = new AccountFragment();
                     loadFragment(fragment);
                     return true;
@@ -74,6 +95,7 @@ public class MainActivity2 extends AppCompatActivity {
             return false;
         }
     };
+
     private void loadFragment(Fragment fragment) {
         // load fragment
         FragmentTransaction transaction =
